@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#
+#1
 # Copyright © OverLordGoldDragon
 # Licensed under the terms of the MIT License
 # (see ssqueezepy/__init__.py for details)
