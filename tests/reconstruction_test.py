@@ -6,9 +6,12 @@ from ssqueezepy import ssq_cwt, issq_cwt, ssq_stft, issq_stft
 from ssqueezepy import cwt, icwt, stft, istft
 from ssqueezepy._stft import get_window
 from ssqueezepy.toolkit import lin_band
+from timeit import default_timer as dtime
+
 
 VIZ = 0  # set to 1 to enable various visuals and run without pytest
 os.environ['SSQ_GPU'] = '0'  # in case concurrent tests set it to '1'
+t0 = dtime()
 
 
 #### Helper methods ##########################################################
@@ -254,3 +257,5 @@ if __name__ == '__main__':
         test_stft_vs_librosa()
     else:
         pytest.main([__file__, "-s"])
+    elapsed = str(dtime() - t0)
+    print(f"reconstruction_test: {elapsed} sec\n" * 10)

@@ -579,14 +579,14 @@ def phase_cwt_num(Wx, dt, difforder=4, gamma=None):
 
     w = _differentiate(Wx, dt)
 
+    # calculate inst. freq for each scale
+    # 2*pi norm per discretized inverse FT rather than inverse DFT
+    w = np.real(-1j * w / Wx) / (2*pi)
+
     # epsilon from Daubechies, H-T Wu, et al.
     # gamma from Brevdo, H-T Wu, et al.
     gamma = gamma or np.sqrt(EPS64 if Wx.dtype == np.cfloat else EPS32)
     w[np.abs(Wx) < gamma] = np.inf
-
-    # calculate inst. freq for each scale
-    # 2*pi norm per discretized inverse FT rather than inverse DFT
-    w = np.real(-1j * w / Wx) / (2*pi)
 
     # see `phase_cwt`, though negatives may no longer be in minority
     w = np.abs(w)

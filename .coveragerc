@@ -4,10 +4,12 @@ omit =
     ssqueezepy/experimental.py
 	ssqueezepy/algos.py
 	ssqueezepy/utils/gpu_utils.py
+	ssqueezepy/utils/stft_utils.py
 
 [report]
 omit =
     ssqueezepy/experimental.py
 	ssqueezepy/algos.py
 	ssqueezepy/utils/gpu_utils.py
+	ssqueezepy/utils/stft_utils.py
 precision = 3
