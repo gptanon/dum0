@@ -75,14 +75,14 @@ def test_ssq_cwt():
         for value in params[name]:
             try:
                 if name == 'maprange' and value in ('maximal', (1, 32)):
-                    _ = ssq_cwt(**kw, **{name: value}, scales='log')
+                    _ = ssq_cwt(**kw, **{name: value}, scales='log', get_w=1)
                 else:
-                    _ = ssq_cwt(**kw, **{name: value})
+                    _ = ssq_cwt(**kw, **{name: value}, get_w=1)
             except Exception as e:
                 raise Exception(f"{name}={value} failed with:\n{e}")
 
-    _ = ssq_cwt(x, wavelet, fs=2, difftype='numeric', difforder=2)
-    _ = ssq_cwt(x, wavelet, fs=2, difftype='numeric', difforder=1)
+    _ = ssq_cwt(x, wavelet, fs=2, difftype='numeric', difforder=2, get_w=1)
+    _ = ssq_cwt(x, wavelet, fs=2, difftype='numeric', difforder=1, get_w=1)
 
 
 def test_cwt():

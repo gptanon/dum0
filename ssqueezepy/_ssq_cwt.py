@@ -183,8 +183,13 @@ def ssq_cwt(x, wavelet='gmw', scales='log-piecewise', nv=None, fs=None, t=None,
         if difftype not in ('trig', 'phase', 'numeric'):
             raise ValueError("`difftype` must be one of: direct, phase, numeric"
                              " (got %s)" % difftype)
-        elif difftype != 'trig' and USE_GPU():
-            raise ValueError("GPU computation only supports `difftype = 'trig'`")
+        elif difftype != 'trig':
+            if USE_GPU():
+                raise ValueError("GPU computation only supports "
+                                 "`difftype = 'trig'`")
+            elif not get_w:
+                raise ValueError("`difftype != 'trig'` requires `get_w = True`")
+
         if difforder is not None:
             if difftype != 'numeric':
                 WARN("`difforder` is ignored if `difftype != 'numeric'")
