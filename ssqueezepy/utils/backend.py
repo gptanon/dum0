@@ -132,6 +132,7 @@ class _Q():
             return getattr(torch, name)
         return getattr(np, name)
 
+
 ##############################################################################
 Q = _Q()
 

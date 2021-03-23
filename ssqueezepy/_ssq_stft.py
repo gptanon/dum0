@@ -8,7 +8,6 @@ from .ssqueezing import ssqueeze, _check_ssqueezing_args
 from .algos import phase_stft_gpu, phase_stft_cpu
 
 
-
 def ssq_stft(x, window=None, n_fft=None, win_len=None, hop_len=1, fs=None, t=None,
              modulated=True, ssq_freqs=None, padtype='reflect', squeezing='sum',
              gamma=None, preserve_transform=None, dtype=None, astensor=True,
