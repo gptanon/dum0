@@ -10,7 +10,6 @@ Note that GPU tests are skipped in CI (Travis), and are instead done locally.
 import os
 import pytest
 import numpy as np
-import torch
 from scipy.fft import fft as sfft, rfft as srfft, ifft as sifft, irfft as sirfft
 from scipy.fft import ifftshift
 
@@ -26,6 +25,7 @@ from ssqueezepy.utils import process_scales, buffer
 # no visuals here but 1 runs as regular script instead of pytest, for debugging
 VIZ = 0
 try:
+    import torch
     torch.tensor(1, device='cuda')
     CAN_GPU = True
 except:
